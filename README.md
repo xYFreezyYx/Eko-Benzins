@@ -11,10 +11,10 @@ Viegli lietojama majaslapa, kas ļauj ērti aprēķināt degvielas patēriņu un
 
 ```
 EkoBenzins/
-├── index.html		# HTML fails
-├── style.css		# CSS fails
+├── index.html      # HTML fails
+├── style.css       # CSS fails
 ├── main.js         # JS fails
-└── README.md		# Projekta informācija
+└── README.md       # Projekta informācija
 ```
 
 ## Iespējamie uzlabojumi
