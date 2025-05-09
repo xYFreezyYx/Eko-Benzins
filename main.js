@@ -51,18 +51,22 @@ function getSimulatedTrafficMultiplier() {
 }
 
 // This function converts seconds to a formatted time string (hh:mm:ss or mm:ss or ss)
-function convertSecondstoTime(sec) {
-    dateObj = new Date(sec * 1000);
-    hours = dateObj.getUTCHours();
-    minutes = dateObj.getUTCMinutes();
-    seconds = dateObj.getSeconds();
-
-    if (hours === 0 && minutes !== 0) {
-        timeString = minutes.toString().padStart(2, '0') + ':' + seconds.toString().padStart(2, '0') + ' min';
-    } else if (hours === 0 && minutes === 0 && seconds !== 0) {
-        timeString = seconds.toString().padStart(2, '0') + ' sec';
-    }else {
-        timeString = hours.toString().padStart(2, '0') + ':' + minutes.toString().padStart(2, '0') + ':' + seconds.toString().padStart(2, '0') + ' h';
+function convertSecondstoTime(base) {
+    base = Number(base);
+    var d = Math.floor(base / (3600*24));
+    var h = Math.floor(base % (3600*24) / 3600);
+    var min = Math.floor(base % 3600 / 60);
+    var sec = Math.floor(base % 60);
+    let timeString;
+    
+    if (d !== 0) {
+        timeString = `${d}:${h}:${min}:${sec} d`;
+    }else if (d === 0 && h !== 0) {
+        timeString = `${h}:${min}:${sec} h`;
+    } else if (d === 0 && h === 0 && min !== 0) {
+        timeString = `${min}:${sec} min`;
+    } else {
+        timeString = `${sec} sec`;
     }
     
     return timeString;
