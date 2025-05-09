@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="lv">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Eko-Benzīns ir maršrutu plānošanas rīks, kas izmanto OpenStreetMap un Valhalla, lai aprēķinātu degvielas patēriņu, attālumu un laiku ceļā.">
+  <title>Eko-Benzīns</title>
+  <link rel="icon" href="https://cdn-icons-png.flaticon.com/256/2137/2137935.png" type="image/x-png">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <div class="sidebar">
+      <header>
+        <h2>Eko-Benzīns</h2>
+        <button id="centerOnRoute" type="button" style="display: none;" onclick="centerOnRoute()">Centrēt</button>
+      </header>
+      <div id="routeInfo" class="route-info">
+        <input type="text" id="from" placeholder="Sākuma adreses">
+        <input type="text" id="to1" placeholder="Galapunkta adrese">
+      </div>
+      <div class="destination-info">
+        <button type="button" id="addDestination" onclick="destinationAddRemove(1)">+</button>
+        <button type="button" id="removeDestination" onclick="destinationAddRemove(0)">-</button>
+      </div>
+      <input type="number" id="cityFuel" placeholder="Degvielas patēriņš pilsētā (L/100km)" step="0.1">
+      <input type="number" id="highwayFuel" placeholder="Degvielas patēriņš uz šosejas (L/100km)" step="0.1">
+      <button type="button" id="calculate" onclick="calculateRoute()">Aprēķināt ceļu</button>
+      <div id="loading" class="spinner" style="display: none;"></div>
+      <footer class="sidebar-footer">
+        <small>&copy; <span id="year"></span> Raimonds Ozoliņš, Rihards Osis, Markuss Dviļs</small>
+        <small>
+          <a href="https://www.openstreetmap.org" target="_blank" rel="noopener">&copy; OpenStreetMap contributors</a>, 
+          <a href="https://valhalla.github.io/valhalla/" target="_blank" rel="noopener">Valhalla</a>,
+          <a href="https://leafletjs.com/" target="_blank" rel="noopener">Leaflet</a>
+        </small>
+        <small>
+          <a href="https://rtk2023.github.io/riki/" rel="noopener">Rīku Saraksts</a>,
+          <a href="https://github.com/rtk2023/riki/tree/main" target="_blank" rel="noopener">Rīku Github</a>
+        </small>
+      </footer>
+    </div>
+    <div id="map"></div>
+  </div>  
+  <div id="info"></div>
+  <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+  <script src="main.js"></script>
+</body>
+</html>
